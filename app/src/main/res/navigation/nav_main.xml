@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_main"
+    app:startDestination="@id/fragment_enter_value">
+
+    <fragment
+        android:id="@+id/fragment_enter_value"
+        android:name="com.example.myfinance.view.activity.EnterValueFragment"
+        android:label="fragment1"
+        tools:layout="@layout/fragment_enter_value" >
+        <action
+            android:id="@+id/action_fragment_enter_value_to_fragment_month"
+            app:destination="@id/fragment_month" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragment_month"
+        android:name="com.example.myfinance.view.activity.MonthFragment"
+        android:label="fragment2"
+        tools:layout="@layout/fragment_month" >
+        <action
+            android:id="@+id/action_fragment_month_to_fragment_enter_value"
+            app:destination="@id/fragment_enter_value" />
+    </fragment>
+</navigation>

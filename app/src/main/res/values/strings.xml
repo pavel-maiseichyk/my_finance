@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">My Finance</string>
+    <string-array name="currency_array">
+        <item>PLN</item>
+        <item>EUR</item>
+        <item>USD</item>
+        <item>BYN</item>
+    </string-array>
+</resources>
