@@ -6,38 +6,43 @@
     android:layout_height="match_parent"
     tools:context=".view.activity.EnterValueFragment">
 
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <LinearLayout
         android:id="@+id/chipGroupOperationType"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
         app:layout_constraintBottom_toTopOf="@id/etlSpent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintStart_toStartOf="parent">
 
         <com.google.android.material.chip.ChipGroup
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:singleSelection="true"
-            app:selectionRequired="true">
+            app:selectionRequired="true"
+            app:singleSelection="true">
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/chipSpent"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:checked="true"
-                android:checkable="true"
                 android:layout_marginEnd="12dp"
-                style="@style/Widget.MaterialComponents.Chip.Choice"
+                android:checkable="true"
+                android:checked="true"
                 android:text="Потратили" />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/chipGot"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:checkable="true"
-                style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:text="Получили" />
         </com.google.android.material.chip.ChipGroup>
     </LinearLayout>
@@ -123,7 +128,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnSave"
         style="?attr/materialButtonOutlinedStyle"
-        android:text="move"
+        android:text="month"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,18 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:tools="http://schemas.android.com/tools"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:cardView="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:padding="16dp">
+    android:clickable="true"
+    android:focusable="true"
+    android:checkable="true"
+    cardView:cardCornerRadius="8dp"
+    cardView:cardElevation="8dp"
+    android:layout_margin="8dp"
+    android:id="@+id/card">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp">
     <TextView
         android:id="@+id/tvDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAllCaps="false"
         android:textSize="20dp"
-        android:textStyle="italic"
+        app:layout_constraintBottom_toBottomOf="@+id/tvSpendingType"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tvSpendingType"
         tools:text="21.09.2021" />
@@ -22,30 +33,42 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="@color/dark_red"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:textColor="@color/dark_red"
         tools:text="Потрачено" />
 
     <com.google.android.material.chip.Chip
         android:id="@+id/tvSpent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="245 PLN"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:textColor="@color/black"
-        app:layout_constraintTop_toBottomOf="@id/tvSpendingType"
         app:layout_constraintStart_toStartOf="parent"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1"/>
+        app:layout_constraintTop_toBottomOf="@id/tvSpendingType"
+        tools:text="245 PLN" />
 
     <TextView
-        android:id="@+id/tvCategories"
+        android:id="@+id/tvCategory"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
-        android:textSize="24dp"
+        android:textSize="20dp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/tvSubcategory"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="Еда" />
+
+    <TextView
+        android:id="@+id/tvSubcategory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+        android:textSize="16dp"
         app:layout_constraintBottom_toBottomOf="@+id/tvSpent"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:text="Еда – шашлык" />
+        tools:text="Шашлык" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

@@ -13,5 +13,21 @@ class MoneyOperationsImpl(private val dao: MoneyDao) : MoneyOperations {
         }
     }
 
+    override fun getMonthData(month: Int, year: Int, type: String): LiveData<List<Money>> =
+        Transformations.map(dao.getMonthData(month, year, type)) { list ->
+        list.map { moneyEntity ->
+            moneyEntity.toMoney()
+        }
+    }
+
+    override fun getAllMonthData(month: Int, year: Int): LiveData<List<Money>> =
+        Transformations.map(dao.getAllMonthData(month, year)) { list ->
+            list.map { moneyEntity ->
+                moneyEntity.toMoney()
+            }
+        }
+
     override fun operate(money: Money) = dao.save(money = MoneyEntity.fromMoney(money))
+
+    override fun deleteById(id: Int) = dao.deleteById(id)
 }
