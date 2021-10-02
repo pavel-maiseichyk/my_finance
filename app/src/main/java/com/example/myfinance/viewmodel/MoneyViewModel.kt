@@ -7,6 +7,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.myfinance.model.dto.Money
 import com.example.myfinance.model.db.AppDb
+import com.example.myfinance.model.dto.OperationType
 import com.example.myfinance.repository.MoneyOperationsImpl
 
 class MoneyViewModel(application: Application) : AndroidViewModel(application) {
@@ -18,7 +19,7 @@ class MoneyViewModel(application: Application) : AndroidViewModel(application) {
 
     fun deleteById(id: Int) = repository.deleteById(id)
 
-    fun getMonthData(month: Int, year: Int, type: String): LiveData<List<Money>> =
+    fun getMonthData(month: Int, year: Int, type: OperationType): LiveData<List<Money>> =
         repository.getMonthData(month, year, type)
 
     fun getAllMonthData(month: Int, year: Int): LiveData<List<Money>> =

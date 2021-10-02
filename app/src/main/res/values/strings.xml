@@ -1,12 +1,35 @@
 <resources>
-    <string name="app_name">My Finance</string>
+    <string name="app_name">Финансики</string>
+    <string name="error_blank">Нужно заполнить!</string>
+    <string name="snackbar_saved">Успешно сохранено!</string>
+    <string name="spent">Потрачено</string>
+    <string name="received">Получено</string>
+    <string name="summary">Итого:</string>
+    <string name="btn_month">Месяц</string>
+    <string name="btn_save">Сохранить</string>
+    <string name="subcategory">Субкатегория</string>
+    <string name="category">Категория</string>
+    <string name="money_input_text">Твои денежки)</string>
+    <string name="nothing_found">Тут ничего :(</string>
+    <string name="new_operation" translatable="false">new operation</string>
     <string-array name="currency_array">
         <item>PLN</item>
         <item>EUR</item>
         <item>USD</item>
         <item>BYN</item>
     </string-array>
-    <string-array name="category_array">
-        <item>всего</item>
+    <string-array name="month_array">
+        <item>Январь</item>
+        <item>Февраль</item>
+        <item>Март</item>
+        <item>Апрель</item>
+        <item>Май</item>
+        <item>Июнь</item>
+        <item>Июль</item>
+        <item>Август</item>
+        <item>Сентябрь</item>
+        <item>Октябрь</item>
+        <item>Ноябрь</item>
+        <item>Декабрь</item>
     </string-array>
 </resources>

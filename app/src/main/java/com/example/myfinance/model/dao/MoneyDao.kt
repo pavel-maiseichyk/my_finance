@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
+import com.example.myfinance.model.dto.OperationType
 import com.example.myfinance.model.entity.MoneyEntity
 
 @Dao
@@ -13,7 +14,7 @@ interface MoneyDao {
     fun get(): LiveData<List<MoneyEntity>>
 
     @Query("SELECT * FROM MoneyEntity WHERE (month = :month) AND (year = :year) AND (type = :type)")
-    fun getMonthData(month: Int, year: Int, type: String): LiveData<List<MoneyEntity>>
+    fun getMonthData(month: Int, year: Int, type: OperationType): LiveData<List<MoneyEntity>>
 
     @Query("SELECT * FROM MoneyEntity WHERE (month = :month) AND (year = :year)")
     fun getAllMonthData(month: Int, year: Int): LiveData<List<MoneyEntity>>

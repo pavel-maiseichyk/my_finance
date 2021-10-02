@@ -9,9 +9,11 @@ import com.example.myfinance.model.entity.MoneyEntity
 
 @Database(entities = [MoneyEntity::class], version = 1)
 abstract class AppDb : RoomDatabase() {
+
     abstract fun moneyDao(): MoneyDao
 
     companion object {
+        private const val DB_NAME = "app.db"
         @Volatile
         private var instance: AppDb? = null
 
@@ -22,7 +24,7 @@ abstract class AppDb : RoomDatabase() {
         }
 
         private fun buildDataBase(context: Context) =
-            Room.databaseBuilder(context, AppDb::class.java, "app.db")
+            Room.databaseBuilder(context, AppDb::class.java, DB_NAME)
                 .allowMainThreadQueries()
                 .build()
     }

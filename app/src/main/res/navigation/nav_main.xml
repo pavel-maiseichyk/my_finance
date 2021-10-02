@@ -12,15 +12,13 @@
         tools:layout="@layout/fragment_enter_value" >
         <action
             android:id="@+id/action_fragment_enter_value_to_fragment_month"
-            app:destination="@id/fragment_month" />
+            app:destination="@id/fragment_month"
+            app:enterAnim="@android:anim/fade_in"
+            app:popEnterAnim="@android:anim/fade_in" />
     </fragment>
     <fragment
         android:id="@+id/fragment_month"
         android:name="com.example.myfinance.view.activity.MonthFragment"
         android:label="fragment2"
-        tools:layout="@layout/fragment_month" >
-        <action
-            android:id="@+id/action_fragment_month_to_fragment_enter_value"
-            app:destination="@id/fragment_enter_value" />
-    </fragment>
+        tools:layout="@layout/fragment_month" />
 </navigation>

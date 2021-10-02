@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">My Finance</string>
+    <string name="error_blank">Must be filled!</string>
+    <string name="snackbar_saved">Saved successfully!</string>
+    <string name="spent">Spent</string>
+    <string name="received">Received</string>
+    <string name="summary">All in all:</string>
+    <string name="btn_month">Month</string>
+    <string name="btn_save">Save</string>
+    <string name="subcategory">Subcategory</string>
+    <string name="category">Category</string>
+    <string name="money_input_text">Your money)</string>
+    <string name="nothing_found">Nothing here :(</string>
+    <string-array name="month_array">
+        <item>January</item>
+        <item>February</item>
+        <item>March</item>
+        <item>April</item>
+        <item>May</item>
+        <item>June</item>
+        <item>July</item>
+        <item>August</item>
+        <item>September</item>
+        <item>October</item>
+        <item>November</item>
+        <item>December</item>
+    </string-array>
+</resources>

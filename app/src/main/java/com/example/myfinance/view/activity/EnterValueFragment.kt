@@ -5,12 +5,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.myfinance.R
 import com.example.myfinance.databinding.FragmentEnterValueBinding
 import com.example.myfinance.model.dto.Money
+import com.example.myfinance.model.dto.OperationType
 import com.example.myfinance.viewmodel.MoneyViewModel
 import com.google.android.material.snackbar.Snackbar
 import java.util.*
@@ -25,9 +27,8 @@ class EnterValueFragment : Fragment() {
         val binding = FragmentEnterValueBinding.inflate(
             inflater, container, false
         )
-
         with(binding) {
-            toolbar.toolbarText.text = "My Finance"
+            toolbar.toolbarText.text = resources.getString(R.string.app_name)
 
             ArrayAdapter.createFromResource(
                 requireContext(), R.array.currency_array,
@@ -41,8 +42,17 @@ class EnterValueFragment : Fragment() {
                 val category = etCategory.text.toString()
                 val spentAmount = etSpent.text.toString()
                 val subcategory = etSubcategory.text.toString()
-                if (category == "" || subcategory == "" || spentAmount == "") {
-                    Snackbar.make(it, "Can't be empty!", Snackbar.LENGTH_LONG).show()
+
+                if (spentAmount.isBlank()) {
+                    etlSpent.error = resources.getString(R.string.error_blank)
+                    return@setOnClickListener
+                }
+                if (category.isBlank()) {
+                    etlCategory.error = resources.getString(R.string.error_blank)
+                    return@setOnClickListener
+                }
+                if (subcategory.isBlank()) {
+                    etlSubcategory.error = resources.getString(R.string.error_blank)
                     return@setOnClickListener
                 }
 
@@ -50,12 +60,12 @@ class EnterValueFragment : Fragment() {
                 val day: Int = calendar.get(Calendar.DAY_OF_MONTH)
                 val month: Int = calendar.get(Calendar.MONTH) + 1
                 val year: Int = calendar.get(Calendar.YEAR)
-                val type = if (chipSpent.isChecked) "SPENT" else "RECEIVED"
+                val type = if (chipSpent.isChecked) OperationType.SPENT else OperationType.RECEIVED
 
                 val money = Money(
                     id = 0,
                     type = type,
-                    moneyAmount = spentAmount.toDouble(),
+                    moneyAmount = spentAmount.toBigDecimal(),
                     currency = spCurrency.selectedItem.toString(),
                     category = category,
                     subcategory = subcategory,
@@ -68,7 +78,12 @@ class EnterValueFragment : Fragment() {
                 etCategory.setText("")
                 etSubcategory.setText("")
 
-                Snackbar.make(it, "Save successful!", Snackbar.LENGTH_LONG)
+                etlCategory.isErrorEnabled = false
+                etlSubcategory.isErrorEnabled = false
+                etlSpent.isErrorEnabled = false
+
+
+                Snackbar.make(it, resources.getString(R.string.snackbar_saved), Snackbar.LENGTH_LONG)
                     .show()
 
                 viewModel.operate(money)

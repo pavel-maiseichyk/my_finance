@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.Transformations
 import com.example.myfinance.model.dto.Money
 import com.example.myfinance.model.dao.MoneyDao
+import com.example.myfinance.model.dto.OperationType
 import com.example.myfinance.model.entity.MoneyEntity
 
 class MoneyOperationsImpl(private val dao: MoneyDao) : MoneyOperations {
@@ -13,7 +14,7 @@ class MoneyOperationsImpl(private val dao: MoneyDao) : MoneyOperations {
         }
     }
 
-    override fun getMonthData(month: Int, year: Int, type: String): LiveData<List<Money>> =
+    override fun getMonthData(month: Int, year: Int, type: OperationType): LiveData<List<Money>> =
         Transformations.map(dao.getMonthData(month, year, type)) { list ->
         list.map { moneyEntity ->
             moneyEntity.toMoney()

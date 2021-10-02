@@ -1,17 +1,15 @@
 package com.example.myfinance.view.adapter
 
-import android.annotation.SuppressLint
-import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
-import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myfinance.R
 import com.example.myfinance.databinding.SpendingCardBinding
 import com.example.myfinance.model.dto.Money
+import com.example.myfinance.model.dto.OperationType
 
 class MoneyAdapter : ListAdapter<Money, MoneyAdapter.MoneyViewHolder>(MoneyDiffCallBack()) {
 
@@ -34,14 +32,13 @@ class MoneyAdapter : ListAdapter<Money, MoneyAdapter.MoneyViewHolder>(MoneyDiffC
         fun bind(money: Money) {
             with(binding) {
                 val context = tvSpendingType.context
-
                 tvDate.text = makeDatePretty(money.day, money.month, money.year)
 
-                if (money.type.toString() == "SPENT") {
-                    tvSpendingType.text = "Потрачено"
+                if (money.type == OperationType.SPENT) {
+                    tvSpendingType.text = context.resources.getString(R.string.spent)
                     tvSpendingType.setTextColor(ContextCompat.getColor(context, R.color.dark_red))
                 } else {
-                    tvSpendingType.text = "Получено"
+                    tvSpendingType.text = context.resources.getString(R.string.received)
                     tvSpendingType.setTextColor(ContextCompat.getColor(context, R.color.dark_green))
                 }
                 tvSpent.text = (money.moneyAmount.toString() + " " + money.currency)
