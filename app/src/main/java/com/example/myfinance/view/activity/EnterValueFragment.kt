@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import androidx.activity.OnBackPressedCallback
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -44,15 +45,15 @@ class EnterValueFragment : Fragment() {
                 val subcategory = etSubcategory.text.toString()
 
                 if (spentAmount.isBlank()) {
-                    etlSpent.error = resources.getString(R.string.error_blank)
+                    etSpent.error = resources.getString(R.string.error_blank)
                     return@setOnClickListener
                 }
                 if (category.isBlank()) {
-                    etlCategory.error = resources.getString(R.string.error_blank)
+                    etCategory.error = resources.getString(R.string.error_blank)
                     return@setOnClickListener
                 }
                 if (subcategory.isBlank()) {
-                    etlSubcategory.error = resources.getString(R.string.error_blank)
+                    etSubcategory.error = resources.getString(R.string.error_blank)
                     return@setOnClickListener
                 }
 
@@ -78,14 +79,12 @@ class EnterValueFragment : Fragment() {
                 etCategory.setText("")
                 etSubcategory.setText("")
 
-                etlCategory.isErrorEnabled = false
-                etlSubcategory.isErrorEnabled = false
-                etlSpent.isErrorEnabled = false
-
-
-                Snackbar.make(it, resources.getString(R.string.snackbar_saved), Snackbar.LENGTH_LONG)
+                Snackbar.make(
+                    it,
+                    resources.getString(R.string.snackbar_saved),
+                    Snackbar.LENGTH_LONG
+                )
                     .show()
-
                 viewModel.operate(money)
             }
 

@@ -1,17 +1,17 @@
 <resources>
-    <string name="app_name">Финансики</string>
-    <string name="error_blank">Нужно заполнить!</string>
-    <string name="snackbar_saved">Успешно сохранено!</string>
-    <string name="spent">Потрачено</string>
-    <string name="received">Получено</string>
-    <string name="summary">Итого:</string>
-    <string name="btn_month">Месяц</string>
-    <string name="btn_save">Сохранить</string>
-    <string name="subcategory">Субкатегория</string>
-    <string name="category">Категория</string>
-    <string name="money_input_text">Твои денежки)</string>
-    <string name="nothing_found">Тут ничего :(</string>
-    <string name="new_operation" translatable="false">new operation</string>
+    <string name="app_name">My Finance</string>
+    <string name="error_blank">Must be filled!</string>
+    <string name="snackbar_saved">Saved successfully!</string>
+    <string name="spent">Spent</string>
+    <string name="received">Received</string>
+    <string name="summary">All in all:</string>
+    <string name="btn_month">Month</string>
+    <string name="btn_save">Save</string>
+    <string name="subcategory">Subcategory</string>
+    <string name="category">Category</string>
+    <string name="money_input_text">Your money)</string>
+    <string name="nothing_found">Nothing here :(</string>
+    <string name="new_operation" translatable="false">New operation</string>
     <string-array name="currency_array">
         <item>PLN</item>
         <item>EUR</item>
@@ -19,17 +19,17 @@
         <item>BYN</item>
     </string-array>
     <string-array name="month_array">
-        <item>Январь</item>
-        <item>Февраль</item>
-        <item>Март</item>
-        <item>Апрель</item>
-        <item>Май</item>
-        <item>Июнь</item>
-        <item>Июль</item>
-        <item>Август</item>
-        <item>Сентябрь</item>
-        <item>Октябрь</item>
-        <item>Ноябрь</item>
-        <item>Декабрь</item>
+        <item>January</item>
+        <item>February</item>
+        <item>March</item>
+        <item>April</item>
+        <item>May</item>
+        <item>June</item>
+        <item>July</item>
+        <item>August</item>
+        <item>September</item>
+        <item>October</item>
+        <item>November</item>
+        <item>December</item>
     </string-array>
 </resources>

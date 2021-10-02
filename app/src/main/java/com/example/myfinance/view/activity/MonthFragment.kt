@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toolbar
 import androidx.activity.OnBackPressedCallback
 import androidx.core.content.ContextCompat
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -34,6 +35,7 @@ class MonthFragment : Fragment() {
         const val EUR_TO_PLN = "4.58"
         const val USD_TO_PLN = "3.95"
         const val BYN_TO_PLN = "1.57"
+        // TODO: Добавить апи
     }
 
     var month = Calendar.getInstance().get(Calendar.MONTH) + 1
@@ -73,8 +75,7 @@ class MonthFragment : Fragment() {
                         viewModel.getAllMonthData(month, year)
                             .observe(viewLifecycleOwner) { list ->
                                 adapter.submitList(list)
-                                if (list.isEmpty()) tvNothingFound.visibility =
-                                    View.VISIBLE else tvNothingFound.visibility = View.GONE
+                                tvNothingFound.isVisible = list.isEmpty()
                                 moneyAmountTextPLN = (countMoneyInPLN(list).toString() + " PLN")
                                 tvSpentAmount.text = moneyAmountTextPLN
                             }
@@ -89,8 +90,7 @@ class MonthFragment : Fragment() {
             viewModel.getAllMonthData(month, year)
                 .observe(viewLifecycleOwner) { list ->
                     adapter.submitList(list)
-                    if (list.isEmpty()) tvNothingFound.visibility =
-                        View.VISIBLE else tvNothingFound.visibility = View.GONE
+                    tvNothingFound.isVisible = list.isEmpty()
                     moneyAmountTextPLN = (countMoneyInPLN(list).toString() + " PLN")
                     tvSpentAmount.text = moneyAmountTextPLN
                 }
@@ -98,8 +98,7 @@ class MonthFragment : Fragment() {
             chipAll.setOnClickListener {
                 viewModel.getAllMonthData(month, year).observe(viewLifecycleOwner) { list ->
                     adapter.submitList(list)
-                    if (list.isEmpty()) tvNothingFound.visibility =
-                        View.VISIBLE else tvNothingFound.visibility = View.GONE
+                    tvNothingFound.isVisible = list.isEmpty()
                     layoutSpent.visibility = View.GONE
                 }
             }
@@ -108,8 +107,7 @@ class MonthFragment : Fragment() {
                 viewModel.getMonthData(month, year, OperationType.SPENT)
                     .observe(viewLifecycleOwner) { list ->
                         adapter.submitList(list)
-                        if (list.isEmpty()) tvNothingFound.visibility =
-                            View.VISIBLE else tvNothingFound.visibility = View.GONE
+                        tvNothingFound.isVisible = list.isEmpty()
                         layoutSpent.visibility = View.VISIBLE
                         moneyAmountTextPLN = (countMoneyInPLN(list).toString() + " PLN")
                         tvSpentAmount.text = moneyAmountTextPLN
@@ -127,8 +125,7 @@ class MonthFragment : Fragment() {
                 viewModel.getMonthData(month, year, OperationType.RECEIVED)
                     .observe(viewLifecycleOwner) { list ->
                         adapter.submitList(list)
-                        if (list.isEmpty()) tvNothingFound.visibility =
-                            View.VISIBLE else tvNothingFound.visibility = View.GONE
+                        tvNothingFound.isVisible = list.isEmpty()
                         layoutSpent.visibility = View.VISIBLE
                         moneyAmountTextPLN = (countMoneyInPLN(list).toString() + " PLN")
                         tvSpentAmount.text = moneyAmountTextPLN
@@ -219,7 +216,7 @@ class MonthFragment : Fragment() {
             9 -> resources.getStringArray(R.array.month_array)[8]
             10 -> resources.getStringArray(R.array.month_array)[9]
             11 -> resources.getStringArray(R.array.month_array)[10]
-            12 -> resources.getStringArray(R.array.month_array)[10]
+            12 -> resources.getStringArray(R.array.month_array)[11]
             else -> ""
         }
 }
