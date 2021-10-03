@@ -39,21 +39,25 @@ class EnterValueFragment : Fragment() {
                 spCurrency.adapter = adapter
             }
 
+            etSpent.addTextChangedListener { etlSpent.error = null }
+            etCategory.addTextChangedListener { etlCategory.error = null }
+            etSubcategory.addTextChangedListener { etlSubcategory.error = null }
+
             btnSave.setOnClickListener {
-                val category = etCategory.text.toString()
                 val spentAmount = etSpent.text.toString()
+                val category = etCategory.text.toString()
                 val subcategory = etSubcategory.text.toString()
 
                 if (spentAmount.isBlank()) {
-                    etSpent.error = resources.getString(R.string.error_blank)
+                    etlSpent.error = resources.getString(R.string.error_blank)
                     return@setOnClickListener
                 }
                 if (category.isBlank()) {
-                    etCategory.error = resources.getString(R.string.error_blank)
+                    etlCategory.error = resources.getString(R.string.error_blank)
                     return@setOnClickListener
                 }
                 if (subcategory.isBlank()) {
-                    etSubcategory.error = resources.getString(R.string.error_blank)
+                    etlSubcategory.error = resources.getString(R.string.error_blank)
                     return@setOnClickListener
                 }
 
@@ -83,8 +87,8 @@ class EnterValueFragment : Fragment() {
                     it,
                     resources.getString(R.string.snackbar_saved),
                     Snackbar.LENGTH_LONG
-                )
-                    .show()
+                ).show()
+
                 viewModel.operate(money)
             }
 
